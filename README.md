@@ -112,6 +112,7 @@ Imagine the following setup:
 
 A directory stucture which looks like:
 
+```bash
 ├── data
 │   └── data.csv
 ├── README.md
@@ -119,3 +120,4 @@ A directory stucture which looks like:
     ├── secretAstro.py
     ├── solveAstronomy.py
     └── utils.py
+```
