@@ -108,9 +108,12 @@ git lab and you can even host your own. But GitHub is definitely the most
 widley used.
 
 #### Let's get a little practical here
-Imagine the following setup: 
+Imagine the following setup. 
 
-A directory stucture which looks like:
+You have not yet intialized a repository, you have the start of a project;
+however, you want to track it on version control.
+
+Let's say you start with a directory stucture that looks like:
 
 ```bash
 ├── data
@@ -121,3 +124,61 @@ A directory stucture which looks like:
     ├── solveAstronomy.py
     └── utils.py
 ```
+
+When I say "root" I mean in the folder containing "data/" "src/" and
+"README.md". The first step is to, from the root, run 
+```bash
+git init
+```
+This will initialize a repository for you. The folder structure will now be
+(note. there is stuff inside .git, but its not important to be familar with
+that)
+```bash
+├── data
+│   └── data.csv
+├── .git
+├── README.md
+└── src
+    ├── secretAstro.py
+    ├── solveAstronomy.py
+    └── utils.py
+
+```
+Okay, your project is now a bonafied git repository, just like you always
+dreamed it would be. You now need to make your first commit. But wait you say,
+before I can commit, I must add! Right you are. You can run the following
+command
+```bash
+git add data/data.csv README.md src/secretAstro.py src/solveAstronomy.py src/utils.py
+```
+That will add all those files to the staging area. Thats actually kinda a long
+command, especially if you have to issue it every time. You can use the shorthand
+```bash
+git add .
+```
+to add all files in the current working directory (represented by the period).
+Basically git add is recursive so if you give it a directory it will add all
+files within that directory. Okay, NOW we can commit things. 
+```bash
+git commit -m "Initial Commit"
+```
+This commit everything in the staging area with the message "Initial Commit".
+You are required to include some message with every commit (Incidently I have a
+conspiracy theory that venmo uses git as their ledgure and thats why you need a
+message with every venmo transfer).
+
+Okay, now lets say that you want to push this to a GitHub repo. You can't
+simply push it, first you need to tell your local repository that it is a
+"remote" of a repository on some server.
+```bash
+git remote add origin master git@github.com:tboudreaux/LetsLearnGit.git
+```
+breaking that down
+
+	1) git remote: The subprogram in the git program you are calling
+	2) add: you want to add a remote (you can have multiple or remove them)
+	3) origin: call the remote you are adding origin (this is the standard name
+	but it can be anything)
+	4) master: the branch you are adding. master is the default branch for a
+	git project, but you can make new branches, merge them, fork them, whatever
+	5) URL: The URL to the remote that you are adding. In this case pulled from GitHub
