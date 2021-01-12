@@ -108,3 +108,14 @@ git lab and you can even host your own. But GitHub is definitely the most
 widley used.
 
 #### Let's get a little practical here
+Imagine the following setup: 
+
+A directory stucture which looks like:
+
+├── data
+│   └── data.csv
+├── README.md
+└── src
+    ├── secretAstro.py
+    ├── solveAstronomy.py
+    └── utils.py
