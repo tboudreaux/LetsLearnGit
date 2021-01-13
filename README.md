@@ -165,7 +165,11 @@ git commit -m "Initial Commit"
 This commit everything in the staging area with the message "Initial Commit".
 You are required to include some message with every commit (Incidently I have a
 conspiracy theory that venmo uses git as their ledgure and thats why you need a
-message with every venmo transfer).
+message with every venmo transfer). Note that the first time you run this it
+will ask for a name an email for records that store with the commit.
+
+
+#### Actually Using GitHub
 
 Okay, now lets say that you want to push this to a GitHub repo. You can't
 simply push it, first you need to tell your local repository that it is a
@@ -182,3 +186,23 @@ breaking that down
 	4) master: the branch you are adding. master is the default branch for a
 	git project, but you can make new branches, merge them, fork them, whatever
 	5) URL: The URL to the remote that you are adding. In this case pulled from GitHub
+
+Now you have told git where the remote is you can push!
+```bash
+git push origin master
+```
+Similar to above. You tell git you want to push the branch named master to the
+remote named origin. Now if you check github the code will be there! The
+subtelty is that you need to login. We will work on this in person cause it can
+be kinda complicated to sign in. Generally thogh you should prefer to sign in
+with an ssh-key rather than your username and password
+
+Now lets say that you have been away from your computer for a couple days.
+During this time its possible a collaborator pushed some code to the
+repository. You could start editing like normal and then push. But then there
+would be a higher likelyhood of a conflict than if you premtivly "pulled".
+Pulling grabs the latest code from github and safley merges it onto your local
+machine. It is always good practice to pull before you start working.
+```bash
+git pull
+```
