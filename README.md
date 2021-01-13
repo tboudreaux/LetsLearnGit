@@ -204,5 +204,100 @@ would be a higher likelyhood of a conflict than if you premtivly "pulled".
 Pulling grabs the latest code from github and safley merges it onto your local
 machine. It is always good practice to pull before you start working.
 ```bash
-git pull
+git pull origin master
 ```
+the first time you run this you may also need to configure your git enviroment
+to merge instead of rebase or fast-forward (merging is the safest and best way
+to handel conflicts).
+```bash
+git config pull.rebase false
+``` 
+
+#### Handeling Conflicts: A n step approach
+So long as you have more than one person working on a project you will
+eventually encounter a merge conflict. Sometimes you will even encounter them
+when you are the only person working on a project, though that is, admitedly,
+much rarer. It is important to know how to handel and resolve conflicts when
+they arise. Start by trying to see the world from the other codes
+perspective....Oh wait, sorry I messed up my note cards. Ah yes, Okay. 
+
+As said earlier a conflict can happen when one file is being edited by multiple
+users. The first step is to avoid conflicts. Do this by having a plan about who
+edits what, but also do this by having *Branches*. Branches are kind of like
+sub repositories within your repository. Say you branch at commit number 5 to a
+branch called "B1-MOND". In that case the branch has all the commits in its
+hirtory up to and including commit number 5. However any subsequent commits to
+the master branch do not affect B1-MOND. Likewise any commits to B1-MOND do not
+affect the master branch. If two users are working on different parts of the
+same file / codebase a good strategy is to have them working on seperate
+branches and then to merge the branches all at once when the changes are done.
+ 
+Sometimes this is simply not possible and a conflict occurs. First check which
+files have conflicts
+```bath
+git status
+```
+then run
+```bash
+git mergetool
+```
+this will open a program similar to the one I mentioned before where you can
+go, line by line, and merge the files. What program is entered will depend on
+how your computer is set up. I use vimdiff. If you are familiar with vim I
+highly recommend it, if not, it has the same steep but rewarding learning curve
+that vim does.
+
+
+#### Branching
+I've talked a lot about "Branching" repositories. But what is this strange and
+wonderful world of Branching, and does it have free muffins? Over the next few
+inches of the page you are reading I will answer those two questions. Well I
+already explained what Branching is in the previous section, but how do you do
+it? Simple! From the root
+```bash
+git branch B1-MOND
+git checkout B1-MOND
+``` 
+This firsts creates a new branch called "B1-MOND" off of whatever commit you
+are on in whatever branch you are in. Then it moves you from your current
+branch to that new branch. Now if you issue a commit it will go into that
+branch and not the master branch. You can switch back to the master branch by
+running
+```bash
+git checkout master
+```
+And no, there are no free muffins. 
+
+#### Stashing
+One thing you might notice, if you checkout a branch, make some edits, dont
+commit them, and try to switch back to the master branch, is that you won't be
+able to. Git will tell you that you have unstashed changes. This is a saftey
+mechanism so that you don't accidently delete work. If you did change back to
+the master while not having commited your work that work would be gone. But
+what if the work is not clean enough to put in the perminate record yet? This
+is where git stash comes in.
+
+Stashing is kinda like a temporary, single record, commit. Basically you stash,
+move away, do some stuff, have a coffee, come back, and then re open the files
+that are stashed. You can stash for multiple branches at once. Here is an
+example of when a stash might be used and how to use it.
+```bash
+git checkout B1-MOND
+vim src/utils.py # Do some edits to utils.py that you don't want to commit
+git stash 
+git checkout master
+echo src/utils.py # check something in master that you may have deleted in B1-MOND
+git stash pop
+```
+We say "pop" because the stash is whats called a "stack". This is a first in
+last out datastructure. So if you stash twice when you run apply it will apply
+the most recent stash. If have multiple stashes and want to apply one that is
+not the most recent run
+```bash
+git stash pop stash@{n}
+``` 
+where n is the index of the stash you want to apply. You can see these indicies by running
+```git
+git stash list
+```
+
