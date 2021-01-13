@@ -308,6 +308,7 @@ git stash list
 Git is an incredibly powerful tool. I have at the same time covered more than
 you will generally need here and less than you will need. The key is to
 remember that there are great resources online to help you. 
+
 	1) https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 	2) https://git-scm.com/docs
 	3) http://jonas.nitro.dk/git/quick-reference.html
