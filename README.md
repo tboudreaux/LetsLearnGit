@@ -261,8 +261,11 @@ git checkout B1-MOND
 This firsts creates a new branch called "B1-MOND" off of whatever commit you
 are on in whatever branch you are in. Then it moves you from your current
 branch to that new branch. Now if you issue a commit it will go into that
-branch and not the master branch. You can switch back to the master branch by
-running
+branch and not the master branch. You can push to the git server simply as
+```bash
+git push origin B1-MOND
+```
+Finally, you can switch back to the master branch by running
 ```bash
 git checkout master
 ```
@@ -301,3 +304,12 @@ where n is the index of the stash you want to apply. You can see these indicies 
 git stash list
 ```
 
+#### Finishing Up
+Git is an incredibly powerful tool. I have at the same time covered more than
+you will generally need here and less than you will need. The key is to
+remember that there are great resources online to help you. 
+	1) https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+	2) https://git-scm.com/docs
+	3) http://jonas.nitro.dk/git/quick-reference.html
+
+Hope this helps!
