@@ -1,7 +1,10 @@
 import numpy as np
 
-def HowManyStarsAreTherePerGalaxy():
-    # Keighley Edit Here
+def HowManyStarsAreTherePerGalaxy(lum,dlum,norm,alpha):
+    
+    dn=lum**(-alpha)/dlum
+
+    return dn
 
 def HowManyGalaxiesAreThere():
     # Abby Edit Here
