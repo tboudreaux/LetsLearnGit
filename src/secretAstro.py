@@ -4,7 +4,8 @@ def HowManyStarsAreTherePerGalaxy():
     # Keighley Edit Here
 
 def HowManyGalaxiesAreThere():
-    # Abby Edit Here
+    return 125000000000
+    # thank you google
 
 if __name__ == "__main__":
     print(f"There are {HowManyStarsAreTherePerGalaxy()*HowManyGalaxiesAreThere()} Stars In the Universe")
