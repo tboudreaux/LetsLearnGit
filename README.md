@@ -304,6 +304,52 @@ where n is the index of the stash you want to apply. You can see these indicies 
 git stash list
 ```
 
+#### Logging in on your UNIX-Like system
+We all want to be logged into GitHub. Well, I don't know if we all want that,
+but I certainly want that. Well I don't know if I want that but I know you want
+that. Well I don't know if you want that but the abstracted versions of the
+people that this document is aimed at want that, and if thats not a good enough
+reason I don't know what is. Anyways, the best way to log into GitHub with with
+an SSH key. This is a public/private key encription string that GitHub will
+have part of and you will have part of. Then when you try and log in it will
+valibdate and let you in. To set up SSH-key login
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com
+```
+You will have to fill in some information. Note the location where the files
+are to be saved! The default location is probably something like
+"/home/UserName/.ssh/id_name". You can enter a pass phase, but tbh I find it a
+bother and don't. Thats probably bad security but thats a sacrifice I am
+currently willing to make (The passphrase is to encrypt the key on your hard
+drive, if you are not worried about people getting access to your machine,
+either locally or remotly then its not nessiairy, if you are then it is).
+
+Okay now that we have an SSH key we need to 
+
+	1) Add it to your GitHub account
+	2) Add it to your local computers identity
+
+First, Adding to your github account. On GitHub click on your profile picture,
+then settings. Once there click on "SSH and GPG keys" in the side bar. Click
+"New SSH key". This will give you a text field to copy stuff into. Copy all the
+contents from the .pub file (for .public) which ssh-keygen created (still
+remember that save location???) and paste them into that text field. Finally,
+click "Add SSH key" at the bottom and you are set there.
+
+Now in your computer there are two ways of doing this, but one of them is
+stupid, and only pillocks, so we are not going to do that way. The way that I
+like is to do the following
+```bash
+vim ~/.ssh/config
+```
+There may or may not already be a file, its okay if not. Regardelss add the
+following line
+```bash
+IdentityFile ~/.ssh/ssh_key_ed25519
+```
+now restart your terminal and you will be all set for the great wide world of
+already being logged into a serive that you should be logged into already on.
+
 #### Finishing Up
 Git is an incredibly powerful tool. I have at the same time covered more than
 you will generally need here and less than you will need. The key is to
