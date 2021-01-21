@@ -5,6 +5,7 @@ def HowManyStarsAreTherePerGalaxy(lum,dlum,norm,alpha):
     
     dn=lum**(-alpha)/dlum
 
+    print('you gotta integrate this baby')
     return dn
 
 def HowManyGalaxiesAreThere():
