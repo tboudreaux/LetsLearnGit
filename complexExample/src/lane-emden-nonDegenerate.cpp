@@ -39,7 +39,7 @@ typedef double (* odeModel)(double vN, double *argv, int argc);
  * Notes:
  * 		    Arguments given as: $ ./programName n h Xi0 Xif itr
  */
-int main(int argc, const char* argv[]){
+int abby(int argc, const char* argv[]){
 
 	double** state = NULL; // 2D array Xi, theta, thetadot, will be dumped to file
 	double* parsedArgv = NULL;
